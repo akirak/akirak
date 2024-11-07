@@ -1,0 +1,11 @@
+{
+  "name": "akirak",
+  "version": "1.0.0",
+  "keywords": [],
+  "author": "Akira Komamura",
+  "description": "Generate my GitHub readme",
+  "dependencies": {
+    "@octokit/graphql-schema": "^15.25.0",
+    "bun-types": "^1.1.34"
+  }
+}
