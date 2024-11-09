@@ -1,0 +1,36 @@
+name: Update readme
+on:
+  pull_request:
+  workflow_dispatch:
+  # cron:
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: cachix/install-nix-action@V27
+        with:
+          extra_nix_config: |
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+
+      - name: Restore the database
+        id: database
+        uses: actions/cache@v4
+        with:
+          path: github-stars.duckdb
+          key: github-stars-database
+
+      - name: Generate the chart
+        run: nix run .#update-chart
+        env:
+          DUCKDB_DATABASE: github-stars.duckdb
+          GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update the readme
+        run: nix run .#update-readme
+
+      - uses: stefanzweifel/git-auto-commit-action@v5
