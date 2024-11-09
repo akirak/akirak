@@ -2,9 +2,12 @@ name: Lint the npm package
 
 on:
   pull_request:
-    paths:
-      - '*.ts'
-      - bun.lockb
+    paths-ignore:
+      - 'generated/**'
+      - README.md
+      - flake.nix
+      - '*.lockb'
+      - '*.lock'
   workflow_dispatch:
 
 concurrency:
