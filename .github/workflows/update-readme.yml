@@ -2,7 +2,8 @@ name: Update readme
 on:
   pull_request:
   workflow_dispatch:
-  # cron:
+  schedule:
+    - cron: '35 4 * * *'
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
