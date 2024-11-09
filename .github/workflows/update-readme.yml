@@ -17,6 +17,7 @@ jobs:
         with:
           extra_nix_config: |
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+            accept-flake-config = true
 
       - name: Restore the database
         id: database
