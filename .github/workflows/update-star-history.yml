@@ -1,16 +1,9 @@
-name: Update readme
+name: Update the star history
 on:
   pull_request:
-    paths:
-      - '*.ts'
-  push:
-    branches:
-      - master
-    paths:
-      - '*.ts'
   workflow_dispatch:
   schedule:
-    - cron: '50 4 * * *'
+    - cron: '35 4 * * *'
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -31,9 +24,19 @@ jobs:
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
             accept-flake-config = true
 
-      - name: Update the readme
-        run: nix run .#update-readme
+      - name: Restore the database
+        id: database
+        uses: actions/cache@v4
+        with:
+          path: github-stars.duckdb
+          key: github-stars-database
+
+      - name: Generate the chart
+        run: nix run .#update-chart
+        env:
+          DUCKDB_DATABASE: github-stars.duckdb
+          GITHUB_API_TOKEN: ${{ secrets.PAT }}
 
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: 'chore: Update readme'
+          commit_message: 'chore: Update the star history chart'
