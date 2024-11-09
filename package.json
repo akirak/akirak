@@ -9,7 +9,6 @@
     "eslint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "@octokit/graphql-schema": "^15.25.0",
     "bun-types": "^1.1.34"
   },
   "devDependencies": {
