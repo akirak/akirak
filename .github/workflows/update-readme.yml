@@ -10,6 +10,11 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
+
+    permissions:
+      # needed by git-auto-commit-action
+      contents: write
+
     steps:
       - uses: actions/checkout@v4
 
