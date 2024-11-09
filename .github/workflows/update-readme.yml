@@ -2,13 +2,19 @@ name: Update readme
 on:
   pull_request:
   workflow_dispatch:
-  # cron:
+  schedule:
+    - cron: '35 4 * * *'
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 jobs:
   update:
     runs-on: ubuntu-latest
+
+    permissions:
+      # needed by git-auto-commit-action
+      contents: write
+
     steps:
       - uses: actions/checkout@v4
 
@@ -16,6 +22,7 @@ jobs:
         with:
           extra_nix_config: |
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+            accept-flake-config = true
 
       - name: Restore the database
         id: database
@@ -28,9 +35,11 @@ jobs:
         run: nix run .#update-chart
         env:
           DUCKDB_DATABASE: github-stars.duckdb
-          GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_API_TOKEN: ${{ secrets.PAT }}
 
       - name: Update the readme
         run: nix run .#update-readme
 
       - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'chore: Update readme'

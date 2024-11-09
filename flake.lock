@@ -190,11 +190,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1730982780,
-        "narHash": "sha256-e4lyWELNbdOVbaHUFy+7TyHaKNlyc3tX04BjpvhUyMM=",
+        "lastModified": 1731118176,
+        "narHash": "sha256-LAoLSGSFaqs0ewBqLsR7Ec6LYFhUbP6fp80zKA9VP+w=",
         "owner": "akirak",
         "repo": "yastar",
-        "rev": "23beab37d3fc27bc0509d7d48f7673bfb4505ee9",
+        "rev": "29c538ccbf8ed790f6b14be2fb23769f527b75e0",
         "type": "github"
       },
       "original": {

@@ -26,10 +26,17 @@
           name = "update-star-chart";
           runtimeInputs = [
             inputs.yastar.packages.${pkgs.system}.default
+            pkgs.svgcleaner
           ];
           text = ''
+            tmp=generated/star-history-orig.svg
+            out=generated/star-history.svg
+
             yastar update
-            yastar chart generated/star-history.svg
+            yastar chart "$tmp"
+            # Optimize the SVG to normalize the stream.
+            svgcleaner "$tmp" "$out"
+            rm -f "$tmp"
           '';
         };
 
