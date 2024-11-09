@@ -1,9 +1,9 @@
 {
   "name": "akirak",
   "version": "1.0.0",
-  "keywords": [],
-  "author": "Akira Komamura",
   "description": "Generate my GitHub readme",
+  "author": "Akira Komamura",
+  "keywords": [],
   "scripts": {
     "eslint": "eslint .",
     "eslint:fix": "eslint . --fix"
