@@ -4,7 +4,7 @@ on:
   pull_request:
     paths:
       - '*.ts'
-      - 'bun.lockb'
+      - bun.lockb
   workflow_dispatch:
 
 concurrency:
@@ -23,7 +23,7 @@ jobs:
           bun-version: latest
 
       - name: Install dependencies
-        run: bun install 
+        run: bun install
 
       - name: Run eslint
         run: bun run eslint
