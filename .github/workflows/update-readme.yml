@@ -42,7 +42,9 @@ jobs:
           GITHUB_API_TOKEN: ${{ secrets.PAT }}
 
       - name: Update the readme
-        run: nix run .#update-readme
+        run: |
+          rm -f README.md
+          nix run .#update-readme
 
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
