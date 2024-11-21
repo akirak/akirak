@@ -89,13 +89,17 @@ async function generateReadme(filename: string) {
   const file = Bun.file(filename)
   const writer = file.writer()
 
-  const chart = (await getChart()).setWidth(450).setHeight(280)
+  const width = 450
+  const height = 200
+  const chart = (await getChart()).setWidth(width).setHeight(height)
   const chartFile = 'assets/chart.png'
   chart.toFile(chartFile)
   writer.write(toHtml(h('figure', [
     h('img', {
       src: chartFile,
       alt: 'Star history',
+      width,
+      height,
     }),
   ])))
 
