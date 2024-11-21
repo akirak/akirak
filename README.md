@@ -1,1 +1,1 @@
-<figure><img src="assets/chart.png" alt="Star history"></figure>
+<figure><img src="assets/chart.png" alt="Star history" width="450" height="200"></figure>
