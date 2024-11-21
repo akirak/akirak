@@ -1,5 +1,3 @@
-import { toHtml } from 'hast-util-to-html'
-import { h } from 'hastscript'
 import QuickChart from 'quickchart-js'
 
 const DATABASE = 'github-stars.duckdb'
@@ -90,14 +88,10 @@ async function generateReadme(filename: string) {
   const writer = file.writer()
 
   const chart = (await getChart()).setWidth(450).setHeight(280)
-  writer.write(toHtml(h('figure', [
-    h('img', {
-      src: await chart.toDataUrl(),
-      alt: 'star history',
-    }),
-  ])))
 
-  writer.write("\n\nThe chart data retrieved using [yastar](https://github.com/akirak/yastar)")
+  writer.write(`![Number of stargazers by language](${await chart.toDataUrl()})`)
+
+  writer.write('\n\nThe chart data retrieved using [yastar](https://github.com/akirak/yastar)')
 
   writer.end()
 }
