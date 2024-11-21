@@ -97,6 +97,8 @@ async function generateReadme(filename: string) {
     }),
   ])))
 
+  writer.write("\n\nThe chart data retrieved using [yastar](https://github.com/akirak/yastar)")
+
   writer.end()
 }
 
