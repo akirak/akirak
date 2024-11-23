@@ -10,7 +10,9 @@
     "build:readme": "rm README.md && bun run src/readme.ts",
     "build:star-history": "bun run src/star-history.ts",
     "build:recent-languages": "bun run src/recent-languages.ts",
-    "build:all": "bun run build:recent-languages && bun run build:star-history && bun run build:readme"
+    "build:combine-images": "gm montage +frame +shadow +label -tile 2x1 -geometry +0+0 assets/chart.png assets/pie-chart.png assets/combined-charts.png",
+    "build:all": "bun run build:recent-languages && bun run build:star-history && bun run build:combine-images && bun run build:readme",
+    "clean": "rm assets/chart.png assets/pie-chart.png"
   },
   "dependencies": {
     "bun-types": "^1.1.36",

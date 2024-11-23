@@ -37,10 +37,12 @@
           runtimeInputs = [
             pkgs.bun
             pkgs.duckdb
+            pkgs.graphicsmagick
           ];
           text = ''
             bun install
             bun run build:all
+            bun run clean
           '';
         };
       });
@@ -49,6 +51,7 @@
         default = pkgs.mkShell {
           packages = [
             pkgs.bun
+            pkgs.graphicsmagick
             pkgs.nodePackages.typescript
             pkgs.nodePackages.typescript-language-server
             pkgs.duckdb
