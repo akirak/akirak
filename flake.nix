@@ -40,7 +40,7 @@
           ];
           text = ''
             bun install
-            bun run main.ts
+            bun run build:all
           '';
         };
       });

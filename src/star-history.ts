@@ -1,13 +1,7 @@
-import { toHtml } from 'hast-util-to-html'
-import { h } from 'hastscript'
 import QuickChart from 'quickchart-js'
+import { DATABASE, queryDuckdb } from './duckdb'
 
-const DATABASE = 'github-stars.duckdb'
-
-async function queryDuckdb<T>(database: string, sql: string): Promise<T[]> {
-  const proc = Bun.spawn(['duckdb', '-json', '-no-stdin', database, sql])
-  return await new Response(proc.stdout).json()
-}
+export const CHART_FILE = 'assets/chart.png'
 
 async function getStarredLanguages(thres: number) {
   return queryDuckdb<{ primary_language: string }>(DATABASE, `
@@ -85,21 +79,9 @@ async function getChart() {
   return chart
 }
 
-async function generateReadme(filename: string) {
-  const file = Bun.file(filename)
-  const writer = file.writer()
-
+export async function writeChartFile() {
   const chart = (await getChart()).setWidth(450).setHeight(280)
-  const chartFile = 'assets/chart.png'
-  chart.toFile(chartFile)
-  writer.write(toHtml(h('figure', [
-    h('img', {
-      src: chartFile,
-      alt: 'Star history',
-    }),
-  ])))
-
-  writer.end()
+  chart.toFile(CHART_FILE)
 }
 
-generateReadme('README.md')
+writeChartFile()

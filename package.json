@@ -7,7 +7,9 @@
   "scripts": {
     "eslint": "eslint .",
     "eslint:fix": "eslint . --fix",
-    "generate-readme": "bun run main.ts"
+    "build:readme": "rm README.md && bun run src/readme.ts",
+    "build:star-history": "bun run src/star-history.ts",
+    "build:all": "bun run build:star-history && bun run build:readme"
   },
   "dependencies": {
     "bun-types": "^1.1.36",
