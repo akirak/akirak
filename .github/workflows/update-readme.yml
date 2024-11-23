@@ -45,6 +45,8 @@ jobs:
         run: |
           rm -f README.md
           nix run .#update-readme
+        env:
+          GITHUB_API_TOKEN: ${{ secrets.PAT }}
 
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
