@@ -1,1 +1,1 @@
-<figure><img src="assets/chart.png" alt="Star history"></figure>
+<figure><img src="assets/chart.png" alt="Star history"><img src="assets/pie-chart.png" alt="Recently used languages"></figure>
