@@ -2,7 +2,8 @@ name: Update readme
 on:
   pull_request:
     paths:
-      - '*.ts'
+      - bun.lockb
+      - 'src/**'
   workflow_dispatch:
   schedule:
     - cron: '35 4 * * *'
