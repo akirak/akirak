@@ -73,6 +73,9 @@ async function getChart() {
         xAxes: [
           { type: 'time' },
         ],
+        yAxes: [
+          { position: 'right' },
+        ],
       },
     },
   })
