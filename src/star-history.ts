@@ -58,7 +58,7 @@ async function getChart() {
     options: {
       title: {
         display: true,
-        text: 'Star history by language',
+        text: 'Star history by language (using akirak/yastar)',
       },
       legend: {
         display: true,
