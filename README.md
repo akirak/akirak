@@ -1,1 +1,0 @@
-<img src="assets/combined-charts.png" alt="Charts">
