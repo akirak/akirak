@@ -1,4 +1,0 @@
-node_modules
-*.duckdb
-.envrc
-.env
