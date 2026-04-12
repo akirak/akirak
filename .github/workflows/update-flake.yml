@@ -10,10 +10,6 @@ on:
         description: GitHub token for actions that need repository API access
         required: true
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
 jobs:
   update:
     runs-on: ubuntu-latest
