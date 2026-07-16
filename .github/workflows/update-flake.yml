@@ -21,7 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
 
-      - uses: cachix/install-nix-action@v31.10.6
+      - uses: cachix/install-nix-action@v31.10.7
         with:
           github_access_token: ${{ secrets.github-token }}
           extra_nix_config:
